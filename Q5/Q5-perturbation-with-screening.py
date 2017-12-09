@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 
 A = 1
 a = 1
+l = 0.3
 
 I = complex(0, 1)
 
@@ -71,14 +72,17 @@ def fd(k1_i, k2_i, x1_i, x2_i):
     return np.real(np.conjugate(u(k1_i, x1_i)) \
     * np.conjugate(u(k2_i, x2_i)) \
     * u(k1_i, x1_i) * u(k2_i, x2_i) \
-    * 1/( abs(x[x1_i] - x[x2_i] ) + h/2 )) / (4 * np.pi)
+    * 1/( abs(x[x1_i] - x[x2_i] ) + h/2 )) \
+    * np.exp(- l * abs(x[x1_i] - x[x2_i] ) ) \
+    / (4 * np.pi)
 
 def fe(k1_i, k2_i, x1_i, x2_i):
     return np.real(np.conjugate(u(k1_i, x1_i)) \
     * np.conjugate(u(k2_i, x2_i)) \
     * u(k1_i, x2_i) * u(k2_i, x1_i) \
     * 1/( abs(x[x1_i] - x[x2_i] ) + h/2 )) \
-    * np.exp( I * ( kl[k1_i] - kl[k2_i] ) * ( x[x1_i] - x[x2_i] ) )\
+    * np.exp( I * ( kl[k1_i] - kl[k2_i] ) * ( x[x1_i] - x[x2_i] ) ) \
+    * np.exp(- l * abs(x[x1_i] - x[x2_i] ) ) \
     / (4 * np.pi)
 
 J_k = []
