@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 
 A = 1
 a = 1
-l = 0.3
+
+band = 4
 
 I = complex(0, 1)
 
@@ -59,8 +60,12 @@ for k in kl:
     ev_list.sort(key=lambda tup:tup[0], reverse=False)
     eVal, eVec = zip(*ev_list)
 
-    k_spectrum_b0.append([k, np.real(eVal[0]), eVec[0]])
-    evl.append(eVal[0])
+    k_spectrum_b0.append([k, np.real(eVal[band]), eVec[band]])
+    evl.append(np.real(eVal[band]))
+
+n = 2/a
+E_f = np.real(max(evl))
+l = np.sqrt( 3 * n / ( 2 * E_f) )
 
 def u(k_i, x_i):
     return k_spectrum_b0[k_i][2][x_i]
@@ -115,6 +120,17 @@ kl = np.array(kl)
 plt.plot(kl, evl)
 plt.plot(kl, evl + correction)
 plt.show()
+
+filename = 'spectrum-screen-' + str(band) + '.dat'
+f = open(filename, 'w')
+
+ec = evl + correction
+
+for i in range(len(kl)):
+    p = str(kl[i]) + '\t' + str(ec[i]) + '\n'
+    f.write(p)
+
+f.close()
 
 #x = np.array(x)
 #
