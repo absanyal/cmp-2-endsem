@@ -91,27 +91,41 @@ def W_1_n(n):
               np.sqrt(len(kl))
     return W_x_1
 
-#n = 10
+#n = 5
 #p0 = np.real(np.conjugate(W_0_n(n)) * W_0_n(n))
 #p1 = np.real(np.conjugate(W_1_n(n)) * W_1_n(n))
-#plt.plot(xn, p0)
-#plt.plot(xn, p1)
+#plt.plot(xn, p0, label = 'Wannier for ground state' )
+#plt.plot(xn, p1, label = 'Wannier for first excited state')
+#plt.legend()
+#plt.xlabel('x')
+#plt.ylabel('Squared norm of Wannier function')
+#plt.savefig('wannier.pdf')
+
 """
+
+##################################################
+
+THIS INTEGRATION WORKS
+It runs very slowly. So the code has been run once
+and the value has been saved to let the code do
+the remaining calculations quickly.
+
+##################################################
 def fd_0(x1_i, x2_i):
     return \
     np.real(\
-    np.conjugate(W_0_n(0)[x1_i] \
-    * np.conjugate(W_0_n(1)[x2_i]) \
-    * W_0_n(0)[x1_i] * W_0_n(1)[x2_i] \
+    np.conjugate(W_0_n(4)[x1_i] \
+    * np.conjugate(W_0_n(5)[x2_i]) \
+    * W_0_n(4)[x1_i] * W_0_n(5)[x2_i] \
     * 1/( abs(xn[x1_i] - xn[x2_i] ) + h/2 )) ) \
     / (4 * np.pi)
 
 def fd_1(x1_i, x2_i):
     return \
     np.real(\
-    np.conjugate(W_1_n(0)[x1_i] \
-    * np.conjugate(W_1_n(1)[x2_i]) \
-    * W_1_n(0)[x1_i] * W_1_n(1)[x2_i] \
+    np.conjugate(W_1_n(4)[x1_i] \
+    * np.conjugate(W_1_n(5)[x2_i]) \
+    * W_1_n(4)[x1_i] * W_1_n(5)[x2_i] \
     * 1/( abs(xn[x1_i] - xn[x2_i] ) + h/2 )) ) \
     / (4 * np.pi)
 
@@ -125,8 +139,8 @@ for x1_i in range(2*len(x)):
 
 print(J0, J1)
 """
-J0= 21.2853586919
-J1= 15.3639340499
+J0= 15.49
+J1= 13.42
 
 nu = 2
 s = 0.5
@@ -148,9 +162,10 @@ E_k_1 = np.array([ \
 E0_1 + 2 * J1 * s * (1 - gamma_k(k)) for k in kl \
  ])
 
-plt.plot(kl, E_k_0)
-plt.plot(kl, E_k_1)
+plt.plot(kl, E_k_0, label = 'Dispersion for ground state')
+plt.plot(kl, E_k_1, label = 'Dispersion for first excited state')
 plt.xlabel('k')
 plt.ylabel('Energy')
+plt.legend(framealpha = 0.2)
 plt.savefig('spin-wave-disp.pdf')
 

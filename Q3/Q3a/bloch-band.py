@@ -15,7 +15,7 @@ c = h**2 / (2 * m)
 
 G = np.linspace(-2, 2, 5)
 
-f = open('spectrum.dat', 'w')
+f = open('spectrum-bloch.dat', 'w')
 
 ql = list(np.linspace(-np.pi/a, np.pi/a, 10000))
 ql.pop(-1)

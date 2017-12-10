@@ -1,0 +1,85 @@
+\documentclass[]{report}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+
+% Title Page
+\title{Advanced Solid State\\
+End-Semester Report}
+\author{}
+
+
+\begin{document}
+\maketitle
+
+\section{Q1}
+Attached.
+
+\section{Q2}
+Attached.
+
+\section{Q3}
+I have solved the non-interacting band with both real and $k$-space Bloch Hamiltonians, with identical result.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{non-interacting}
+	\caption{Non-interacting band structure.}
+	\label{fig:non-interacting}
+\end{figure}
+
+The band structure shift due to perturbation theory is shown as well.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{pert}
+	\caption{Correction due to perturbation.}
+	\label{fig:pert}
+\end{figure}
+
+The HF code is attached. Due to some bug, which could not be traced, the energies are not converging.
+
+It is to be noted that the value of the correction is highly dependent on the number of atoms in the unit cell as the number of lattice points chosen for doing the calculation.
+
+\section{Q4}
+Working code has been attached.
+
+\section{Q5}
+The screening constant, $\lambda$, has been estimated from
+\begin{align}
+\lambda = \sqrt{\frac{3n}{2 E_f}}
+\end{align}
+where $n=2$ is the number density of electrons and $E_f$ is the Fermi energy, estimated from the band structure.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{screening}
+	\caption{Correction due to screening.}
+	\label{fig:screening}
+\end{figure}
+
+\section{Q6}
+In order to calculate the ferromagnetic constant, $J$, the Bloch Hamiltonian was first diagonalized, and then, the Wannier function was calculated using the following.
+
+\begin{align}
+W_{m,R_n}(x) = \sum_k u_{m}(x)\exp(i k x) \exp(-i k n a)
+\end{align}
+It was confirmed that the exchange integral remains constant.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{wannier}
+	\caption{Wannier functions for ground and first excited state for the same certain unit cell.}
+	\label{fig:wannier}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{spin-wave-disp}
+	\caption{Spin wave dispersion for first two bands.}
+	\label{fig:spin-wave-disp}
+\end{figure}
+
+
+\end{document}          
