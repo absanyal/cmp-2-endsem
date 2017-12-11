@@ -43,7 +43,9 @@ The HF code is attached. Due to some bug, which could not be traced, the energie
 It is to be noted that the value of the correction is highly dependent on the number of atoms in the unit cell as the number of lattice points chosen for doing the calculation.
 
 \section{Q4}
-Working code has been attached.
+Uncorrected excitation energy from non-interacting bands: 1.01278\\
+Correction to excitation energy due to interaction: -0.048597\\
+Corrected excitation energy due to interaction: 0.964172
 
 \section{Q5}
 The screening constant, $\lambda$, has been estimated from
@@ -66,20 +68,22 @@ In order to calculate the ferromagnetic constant, $J$, the Bloch Hamiltonian was
 W_{m,R_n}(x) = \sum_k u_{m}(x)\exp(i k x) \exp(-i k n a)
 \end{align}
 It was confirmed that the exchange integral remains constant.
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{wannier}
 	\caption{Wannier functions for ground and first excited state for the same certain unit cell.}
 	\label{fig:wannier}
 \end{figure}
-
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{spin-wave-disp}
 	\caption{Spin wave dispersion for first two bands.}
 	\label{fig:spin-wave-disp}
-\end{figure}
+\end{figure}\\
+The ferromagnetic constants were calculated to be:\\
+For the first band, $J_0 = 15.49$.\\
+For the second band, $J_1 = 13.42$.\\
 
+These were put in the expression given in Madelung (3.210) and the corrected bands were plotted.
 
 \end{document}          

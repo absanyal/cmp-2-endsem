@@ -91,14 +91,14 @@ def W_1_n(n):
               np.sqrt(len(kl))
     return W_x_1
 
-#n = 5
-#p0 = np.real(np.conjugate(W_0_n(n)) * W_0_n(n))
-#p1 = np.real(np.conjugate(W_1_n(n)) * W_1_n(n))
-#plt.plot(xn, p0, label = 'Wannier for ground state' )
-#plt.plot(xn, p1, label = 'Wannier for first excited state')
-#plt.legend()
-#plt.xlabel('x')
-#plt.ylabel('Squared norm of Wannier function')
+n = 10
+p0 = np.real(np.conjugate(W_0_n(n)) * W_0_n(n))
+p1 = np.real(np.conjugate(W_1_n(n)) * W_1_n(n))
+plt.plot(xn, p0, label = 'Wannier for ground state' )
+plt.plot(xn, p1, label = 'Wannier for first excited state')
+plt.legend()
+plt.xlabel('x')
+plt.ylabel('Squared norm of Wannier function')
 #plt.savefig('wannier.pdf')
 
 """
@@ -131,8 +131,8 @@ def fd_1(x1_i, x2_i):
 
 J0 = 0
 J1 = 0
-for x1_i in range(2*len(x)):
-    for x2_i in range(2*len(x)):
+for x1_i in range(2*len(xn)):
+    for x2_i in range(2*len(xn)):
         print(x1_i,x2_i)
         J0 += fd_0(x1_i, x2_i)
         J1 += fd_1(x1_i, x2_i)
@@ -162,10 +162,10 @@ E_k_1 = np.array([ \
 E0_1 + 2 * J1 * s * (1 - gamma_k(k)) for k in kl \
  ])
 
-plt.plot(kl, E_k_0, label = 'Dispersion for ground state')
-plt.plot(kl, E_k_1, label = 'Dispersion for first excited state')
-plt.xlabel('k')
-plt.ylabel('Energy')
-plt.legend(framealpha = 0.2)
-plt.savefig('spin-wave-disp.pdf')
+#plt.plot(kl, E_k_0, label = 'Dispersion for ground state')
+#plt.plot(kl, E_k_1, label = 'Dispersion for first excited state')
+#plt.xlabel('k')
+#plt.ylabel('Energy')
+#plt.legend(framealpha = 0.2)
+#plt.savefig('spin-wave-disp.pdf')
 

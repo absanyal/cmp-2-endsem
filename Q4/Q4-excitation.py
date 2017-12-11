@@ -96,6 +96,11 @@ for x1_i in range(len(x)):
 
 K = np.real(K)
 
+uncorrected_energy = k_spectrum_b1[k1_i][1] - k_spectrum_b0[k2_i][1]
+
 correction = -J + 2 *K
 
+total_e_e = uncorrected_energy + correction
+
 print(correction)
+print(total_e_e)
